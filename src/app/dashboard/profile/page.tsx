@@ -599,7 +599,7 @@ export default function ProfilePage() {
               </div>
 
               {/* Service-specific information */}
-              {business.type === 'service' && business.services && business.services.length > 0 && (
+              { (isEditingBusiness ? editedBusiness.type : business.type) === 'service' && (editedBusiness.services || business.services) && (editedBusiness.services?.length || business.services?.length) > 0 && (
                 <div className="mt-6">
                   <h3 className="mb-4 text-xl font-bold text-white">Services</h3>
                   <div className="grid gap-4 md:grid-cols-2">
@@ -615,7 +615,7 @@ export default function ProfilePage() {
               )}
 
               {/* Product-specific information */}
-              {business.type === 'product' && business.products && business.products.length > 0 && (
+              { (isEditingBusiness ? editedBusiness.type : business.type) === 'product' && (editedBusiness.products || business.products) && (editedBusiness.products?.length || business.products?.length) > 0 && (
                 <div className="mt-6">
                   <h3 className="mb-4 text-xl font-bold text-white">Products</h3>
                   <div className="grid gap-4 md:grid-cols-2">
@@ -631,7 +631,7 @@ export default function ProfilePage() {
               )}
 
               {/* E-commerce-specific information */}
-              {business.type === 'ecommerce' && business.ecommerce && (
+              { (isEditingBusiness ? editedBusiness.type : business.type) === 'ecommerce' && (editedBusiness.ecommerce || business.ecommerce) && (
                 <div className="mt-6">
                   <h3 className="mb-4 text-xl font-bold text-white">E-commerce Details</h3>
                   <div className="grid gap-6 md:grid-cols-2">
