@@ -1,0 +1,37 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow public read access to subscription plans
+    match /subscription_plans/{planId} {
+      allow read: if true;
+      allow write: if false; // No writes allowed
+    }
+
+    // Users collection rules
+    match /users/{userId} {
+      // Read rules: user can read own profile or if they are the referrer
+      allow read: if request.auth != null && (
+        request.auth.uid == userId ||
+        resource.data.referrer_id == request.auth.uid
+      );
+
+      // Update rules: user can update own subscription; referrer can update coins
+allow update: if request.auth != null && (
+    (request.auth.uid == userId &&
+     request.resource.data.diff(resource.data).affectedKeys().hasOnly(['subscription'])) ||
+    (resource.data.referrer_id == request.auth.uid &&
+     request.resource.data.diff(resource.data).affectedKeys().hasOnly(['subscription.coins']))
+  );
+
+      // Create/delete rules
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow delete: if false; // Disallow deletes
+
+  // Allow access to rewards subcollection
+  match /rewards/{rewardId} {
+    allow read, write: if request.auth.uid == userId;
+  }
+    }
+  }
+}

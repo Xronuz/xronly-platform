@@ -1,0 +1,29 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "naumovs.color-highlight",
+    "ms-vsliveshare.vsliveshare",
+    "christian-kohler.path-intellisense",
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens",
+    "eamodio.gitlens",
+    "wix.vscode-import-cost",
+    "pkief.material-icon-theme",
+    "Prisma.prisma",
+    "yoavbls.pretty-ts-errors",
+    "csstools.postcss",
+    "ms-vscode.vscode-typescript-next",
+    "aaron-bond.better-comments",
+    "steoates.autoimport",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "mechatroner.rainbow-csv",
+    "vunguyentuan.vscode-css-variables",
+    "ms-vscode.test-adapter-converter",
+    "Orta.vscode-jest",
+    "ZixuanChen.vitest-explorer"
+  ]
+}
